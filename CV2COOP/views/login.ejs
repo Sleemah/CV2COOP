@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -35,25 +38,25 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 
-			$( "#form1" ).submit(function(event) {
+			$( "#form" ).submit(function(event) {
 				event.preventDefault();
 
 				$.ajax({
 					type: 'POST',
-					url: '/',
-					data: $('#form1').serialize(),
+					url: '/login',
+					data: $('#form').serialize(),
 					dataType: "json",
 					success: function(response){
 						//alert("a");
 						//console.log(response.Success);
-						$('#form1')[0].reset();
+						$('#form')[0].reset();
 
 						document.getElementById("check").innerHTML=response.Success;
          					//ADD THIS CODE
          					setTimeout(function(){
          						document.getElementById("check").innerHTML="";
          					},3000);
-         					if (response.Success=="You are regestered,You can login now.") {
+         					if (response.Success=="Success!") {
          						document.getElementById("aa").click();
          					};
          				},
@@ -61,6 +64,7 @@
          				}
          			})
 			});
+
 		});
 	</script>
 
@@ -91,7 +95,7 @@
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.html">Home </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="about.html"> About</a>
@@ -104,7 +108,7 @@
             <div class="quote_btn-container ">
             
                   <div class="nav-item">
-                    <a class="nav-linksign" href="#contactLink">Sign In </a>
+                    <a class="nav-linksign" href="#contactLink">Sign In <span class="sr-only">(current)</span> </a>
                 </div>
               </ul>
             </div>
@@ -306,29 +310,27 @@
   <section class="work_section layout_padding">
 	<div class="container-fluid">
 		
-		<div class="col-md-4 col-md-offset-4" algin="center">
+		<div class="col-md-4 col-md-offset-4">
 			<div>
-				<p><h2> <b>Register Now !</b> </h2>
-				</p>
+				<p>Login</p>
 			</div>
 			<div class="form-group">
-				<form id="form1" method="post">
-					<input type="email" name="email" placeholder="E-mail" required="" class="form-control"><br/>
-					<input type="text" name="username" placeholder="Username" required="" class="form-control"><br/>
+				<form id="form" method="post" >
+					<input type="text" name="email" placeholder="E-mail" required="" class="form-control"><br/>
 					<input type="password" name="password" placeholder="Password" required="" class="form-control"><br/>
-					<input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control"><br/>
-					<input type="submit" value="Register" class="btn btn-success">
+					<input type="submit" value="Login" class="btn btn-success">
 				</form>
 			</div>
-			
 			<div class="mssg bg-danger">
-				<span id="check"></span>
+				<span id="check" ></span>
 			</div>
-			<div>
-				<span>Already Registered! <a href="/login">Login</a></span>
+			<div id="LangTable"><a href="/profile" id="aa"></a>
 			</div>
-			<div id="LangTable"><a href="/login" id="aa"></a>
+			<div><span>Do you forgot password?</span><a href="/forgetpass">Click here</a>
+			<div><span>Create a new Account?</span><a href="/">Register here</a>
+	
 			</div>
+			
 		</div>
       </div>    
   </section>
