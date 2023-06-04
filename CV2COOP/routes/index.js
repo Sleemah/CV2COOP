@@ -57,9 +57,11 @@ router.post('/', function(req, res, next) {
 	}
 });
 
-router.get('/login', function (req, res, next) {
+router.get('/login', function (req, res, next) {//check if session exists
 	return res.render('login.ejs');
 });
+
+
 
 router.post('/login', function (req, res, next) {
 	//console.log(req.body);
