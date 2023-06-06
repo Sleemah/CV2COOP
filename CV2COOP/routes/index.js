@@ -115,7 +115,7 @@ router.get('/forgetpass', function (req, res, next) {
 	res.render("forget.ejs");
 });
 
-router.post('/forgetpass', function (req, res, next) {
+router.post('/forgetpass', function (req, res, next) { // check
 	//console.log('req.body');
 	//console.log(req.body);
 	User.findOne({email:req.body.email},function(err,data){
